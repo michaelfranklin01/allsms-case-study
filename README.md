@@ -39,7 +39,11 @@ The most important design decision was to share preparation, compliance, persist
 
 ## My Role
 
-I serve as CTO / Software Engineer and have been one of the primary engineers responsible for architecture, backend and API design, messaging orchestration, database and data-flow design, provider integrations, production operations, and frontend/backend integration. I have also provided technical leadership and worked alongside other engineers.
+**Project timeline:** 2024–Present — ongoing architecture, development, deployment, and production operations.
+
+**Role:** Software Engineer / Technical Lead
+
+I have been one of the primary engineers responsible for the platform’s architecture, backend and API design, messaging orchestration, database and data-flow design, provider integrations, production operations, and frontend/backend integration. I have also provided technical leadership and worked alongside other engineers.
 
 This was a team effort. The case study describes areas I led or contributed to without implying that I personally authored every line of the system.
 
