@@ -1,0 +1,36 @@
+flowchart LR
+    Operator[Operator] --> UI[React Operator Console]
+
+    subgraph Application[Application Service]
+        API[Messaging API]
+        Auth[Authentication and Sessions]
+        Orchestrator[Message and Campaign Orchestration]
+        Reporting[Conversation and Reporting Services]
+    end
+
+    UI -->|REST requests| API
+    UI -.->|Periodic message refresh| API
+    API --> Auth
+    API --> Orchestrator
+    API --> Reporting
+
+    DB[(Primary Data Store)]
+    Auth --> DB
+    Orchestrator --> DB
+    Reporting --> DB
+
+    Orchestrator --> Route[Managed Routes]
+    Orchestrator --> Provider[External Messaging Providers]
+    API --> Payment[Payment Platform]
+    API --> AI[AI Service]
+
+    subgraph Background[Inbound and Background Service]
+        Listener[Webhook and Device Listener]
+        Reconciler[Scheduled Campaign Reconciliation]
+    end
+
+    Route -->|Inbound and status events| Listener
+    Provider -->|Inbound and delivery events| Listener
+    Listener --> DB
+    Reconciler -->|Status queries| Provider
+    Reconciler --> DB

@@ -1,0 +1,26 @@
+flowchart TD
+    Start[Operator starts a message or campaign] --> Validate[Validate input and normalize contacts]
+    Validate --> Prepare[Personalize content and enrich customer records]
+    Prepare --> Compliance[Apply configured compliance filters]
+    Compliance --> Choice{Delivery model}
+
+    Choice -->|Managed routes| Capacity[Load route capability and usage]
+    Capacity --> Assign[Assign messages by capacity-aware round robin]
+    Assign --> Batch[Build ordered SMS and MMS batches]
+    Batch --> DirectSend[Submit paced batches]
+
+    Choice -->|External provider| Lanes[Build eligible provider lanes]
+    Lanes --> Map[Map internal contact fields to provider fields]
+    Map --> Import[Create and import contact lists]
+    Import --> Campaign[Create provider campaigns]
+
+    DirectSend --> Record[Persist message and job state]
+    Campaign --> Record
+    Record --> Initial[Return accepted, queued, filtered, or failed summary]
+
+    Initial --> Events[Receive inbound and delivery events]
+    Initial --> Poll[Poll open campaigns on a schedule]
+    Events --> Reconcile[Normalize and reconcile outcomes]
+    Poll --> Reconcile
+    Reconcile --> Final[Update message, campaign, and billing summaries]
+    Final --> Refresh[Operator UI observes state on next refresh]
