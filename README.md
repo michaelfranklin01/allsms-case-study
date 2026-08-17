@@ -13,6 +13,8 @@ Both paths needed to share customer data, compliance filtering, message records,
 
 This case study describes the implemented architecture at a public-safe level. It contains no production source code, customer data, credentials, internal identifiers, or proprietary provider configuration.
 
+`Core stack:` TypeScript, React, Node.js, Express, MySQL, REST APIs
+
 ## Production Context
 
 ALL SMS operates as a real production messaging platform with more than 10 million outbound message records and hundreds of thousands of inbound responses processed across its operational history. The platform has handled peak daily volume exceeding 200,000 messages while maintaining shared customer, compliance, billing, and delivery-state workflows across both managed messaging infrastructure and carrier/API-based delivery paths.
